@@ -118,7 +118,7 @@ const BHome = () => {
             const result = getAuctionResult(crop);
 
             return (
-              <div key={crop.id} className="b-crop-card flex flex-col gap-3 bg-amber-100 shadow-lg p-5 items-center justify-center text-center font-semibold rounded-lg">
+              <div key={crop.id} className="b-crop-card flex flex-col gap-3 bg-amber-200 shadow-lg p-5 items-center justify-center text-center font-semibold rounded-lg">
                 <img src={crop.images?.[0] || ""} alt={crop.name}  className="rounded-lg"/>
 
                 <h3 className="text-xl font-bold text-green-500">{crop.name}</h3>
