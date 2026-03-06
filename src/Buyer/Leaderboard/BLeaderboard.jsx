@@ -68,8 +68,8 @@ const BLeaderboard = () => {
   }
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>My Leaderboards</h2>
+    <div className="relative bottom-40">
+      <h2 className="font-extrabold text-3xl text-center text-amber-900 ">My Leaderboards</h2>
 
       {boards.map(({ crop, bidders, myStatus }) => {
         const ended = Date.now() >= crop.auctionEndTime;
@@ -77,13 +77,7 @@ const BLeaderboard = () => {
         return (
           <div
             key={crop.id}
-            style={{
-              border: "1px solid #ccc",
-              borderRadius: "10px",
-              padding: "15px",
-              marginBottom: "25px",
-              position: "relative",
-            }}
+         className="flex flex-col justify-start gap-10 mt-10 mr-240"
           >
             {/* 🗑️ DELETE BUTTON (ONLY IF LOST) */}
             {ended && myStatus === "Lost" && (
@@ -104,22 +98,22 @@ const BLeaderboard = () => {
               </button>
             )}
 
-            <h3>{crop.name}</h3>
-            <p>
+            <strong className="text-xl font-bold text-green-500">{crop.name}</strong>
+            <p className="text-amber-900 font-bold">
               Status:{" "}
-              <strong>{ended ? "Ended" : "Running"}</strong>
+              <strong className="text-green-700">{ended ? "Ended" : "Running"}</strong>
             </p>
-
-            <table width="100%" border="1">
-              <thead>
-                <tr>
-                  <th>Rank</th>
-                  <th>Buyer</th>
-                  <th>Bid</th>
-                  <th>Status</th>
+<div className="border border-1 border-gray-200 rounded-lg">
+  <table className="w-full" >
+              <thead className="bg-yellow-300">
+                <tr className="border border-green-300">
+                  <th className="p-3">Rank</th>
+                  <th className="p-3">Buyer</th>
+                  <th className="p-3">Bid</th>
+                  <th className="p-3">Status</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="bg-amber-700 text-amber-100 font-semibold">
                 {bidders.map((b, i) => {
                   let statusText = "Losing";
                   if (!ended && i === 0) statusText = "Winning";
@@ -129,22 +123,18 @@ const BLeaderboard = () => {
                   return (
                     <tr
                       key={b.userId}
-                      style={{
-                        background:
-                          b.userId === user.id
-                            ? "#e6ffe6"
-                            : "transparent",
-                      }}
+                   
                     >
-                      <td>{i + 1}</td>
-                      <td>{b.name}</td>
-                      <td>₹{b.price}</td>
-                      <td>{statusText}</td>
+                      <td className="p-3 border-gray-200">{i + 1}</td>
+                      <td className="p-3 border-gray-200">{b.name}</td>
+                      <td className="p-3 border-gray-200">₹{b.price}</td>
+                      <td className="p-3 border-gray-200" >{statusText}</td>
                     </tr>
                   );
                 })}
               </tbody>
-            </table>
+            </table></div>
+            
           </div>
         );
       })}

@@ -101,8 +101,11 @@ const Mybidlist = () => {
 
   /* ================= UI ================= */
   return (
-    <div className="mybidlist-page">
-      <h2>My Bids</h2>
+
+  <div className="relative bottom-35 min-h-screen min-w-screen">
+    <h2 className="text-center p-4 text-xl font-bold ">My Bids</h2>
+ <div className="mybidlist-page flex justify-start m-10 gap-10">
+     
 
       {bids.length === 0 ? (
         <p>No bids placed yet.</p>
@@ -113,13 +116,9 @@ const Mybidlist = () => {
           return (
             <div
               key={bid.id}
-              style={{
-                border: "1px solid #ccc",
-                padding: 12,
-                marginBottom: 12,
-                position: "relative",
-                borderRadius: 6,
-              }}
+className="border font-semibold rounded-lg p-3 bg-amber-100 text-center border-gray-200 shadow-lg shadow-gray-400 flex flex-col gap-2"
+
+          
             >
               {/* 🗑️ DELETE LOST BID */}
               {ended && bid.bidStatus === "Lost" && (
@@ -145,20 +144,14 @@ const Mybidlist = () => {
                 <img
                   src={bid.images[0]}
                   alt={bid.cropName}
-                  style={{
-                    width: "100%",
-                    height: "160px",
-                    objectFit: "cover",
-                    borderRadius: "6px",
-                    marginBottom: "10px",
-                  }}
+                  
                 />
               )}
 
-              <h3>{bid.cropName}</h3>
-              <p>Your Bid: ₹{bid.bidPrice}</p>
-              <p>Status: {bid.bidStatus}</p>
-              <p>Time Remaining: {formatTime(bid)}</p>
+              <h3 className="text-green-500 text-xl">{bid.cropName}</h3>
+              <p className="text-amber-900">Your Bid: <span className="text-green-700">₹{bid.bidPrice}</span> </p>
+              <p className="text-amber-900">Status: <span className="text-green-700"> {bid.bidStatus}</span></p>
+              <p className="text-amber-900">Time Remaining: <span className="text-green-700">{formatTime(bid)}</span> </p>
 
               {!ended && (
                 <button onClick={() => updateBid(bid)}>Update Bid</button>
@@ -168,6 +161,12 @@ const Mybidlist = () => {
         })
       )}
     </div>
+
+
+  </div>
+  
+  
+   
   );
 };
 

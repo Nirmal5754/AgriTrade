@@ -59,32 +59,28 @@ const BChats = () => {
   }
 
   return (
-    <div style={{ padding: 20, maxWidth: 900 }}>
-      <h2>Chats</h2>
+    <div className="relative bottom-50 min-w-screen min-h-screen justify-center">
+      <h2 className="m-10 font-extrabold text-3xl text-amber-900 text-center">Chats</h2>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+      <div className="flex flex-col ml-15 mt-5 items-center">
         {chatCrops.map((crop) => (
           <div
             key={crop.id}
-            style={{
-              border: "1px solid #ccc",
-              borderRadius: 10,
-              padding: 16,
-            }}
+            className="gap-2 flex justify-evenly items-center w-150 border bg-yellow-200 border-white rounded p-3"
           >
             <p>
-              <strong>Farmer:</strong> {getFarmerName(crop)}
+              <strong className="text-amber-900 font-extrabold">Farmer:</strong> <span className="text-green-700 font-bold">{getFarmerName(crop)}</span> 
             </p>
 
             <p>
-              <strong>Crop:</strong> {crop.name}
+              <strong  className="text-amber-900 font-extrabold">Crop:</strong> <span className="text-green-700 font-bold">{crop.name}</span> 
             </p>
 
             <button
               onClick={() => navigate(`/bmessage/${crop.id}`)}
-              style={{ marginTop: 10 }}
+            className="rounded-lg bg-green-400 shadow-md shadow-black-200 px-4 py-1 text-amber-900 font-extrabold"
             >
-              Chat
+              Chat now
             </button>
           </div>
         ))}
